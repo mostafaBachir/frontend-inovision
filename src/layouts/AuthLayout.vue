@@ -10,8 +10,4 @@
 // Layout d'auth basique sans sidebar/toolbar
 </script>
 
-<style scoped>
-.q-layout {
-  background-color: #f5f5f5;
-}
-</style>
+<style scoped></style>

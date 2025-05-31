@@ -1,0 +1,132 @@
+<svg 
+  viewBox="0 0 1920 1080" 
+  preserveAspectRatio="xMidYMid slice"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Définitions -->
+  <defs>
+    <!-- Gradient principal -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#42A5F5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1976D2;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gradient sombre -->
+    <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gradient glow -->
+    <radialGradient id="glowGradient">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Filtre glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Filtre blur -->
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+
+    <!-- Pattern circuit -->
+    <pattern id="circuitPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path 
+        d="M 20 20 L 80 20 M 50 20 L 50 80 M 20 80 L 80 80 M 20 50 L 80 50" 
+        stroke="#42A5F5" 
+        stroke-width="0.5" 
+        fill="none" 
+        opacity="0.1"
+      />
+      <circle cx="20" cy="20" r="2" fill="#42A5F5" opacity="0.2"/>
+      <circle cx="80" cy="20" r="2" fill="#42A5F5" opacity="0.2"/>
+      <circle cx="50" cy="50" r="3" fill="#42A5F5" opacity="0.3"/>
+      <circle cx="20" cy="80" r="2" fill="#42A5F5" opacity="0.2"/>
+      <circle cx="80" cy="80" r="2" fill="#42A5F5" opacity="0.2"/>
+    </pattern>
+
+    <!-- Pattern dots -->
+    <pattern id="dotPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <circle cx="25" cy="25" r="1" fill="#42A5F5" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Background base -->
+  <rect width="100%" height="100%" fill="#fafafa" class="bg-base"/>
+  
+  <!-- Circuit pattern overlay -->
+  <rect width="100%" height="100%" fill="url(#circuitPattern)" class="circuit-layer"/>
+
+  <!-- Formes de fond -->
+  <g class="background-shapes" opacity="0.05">
+    <circle cx="200" cy="200" r="300" fill="url(#primaryGradient)"/>
+    <circle cx="1720" cy="880" r="400" fill="url(#primaryGradient)"/>
+    <circle cx="960" cy="540" r="200" fill="none" stroke="url(#primaryGradient)" stroke-width="2"/>
+  </g>
+
+  <!-- Lignes de connexion statiques -->
+  <g class="connection-lines" opacity="0.2">
+    <line x1="0" y1="540" x2="1920" y2="540" stroke="url(#primaryGradient)" stroke-width="0.5"/>
+    <line x1="960" y1="0" x2="960" y2="1080" stroke="url(#primaryGradient)" stroke-width="0.5"/>
+    <line x1="0" y1="0" x2="1920" y2="1080" stroke="url(#primaryGradient)" stroke-width="0.5"/>
+    <line x1="1920" y1="0" x2="0" y2="1080" stroke="url(#primaryGradient)" stroke-width="0.5"/>
+  </g>
+
+  <!-- Cercles animés -->
+  <g class="animated-circles">
+    <circle cx="100" cy="100" r="2" fill="url(#primaryGradient)" opacity="0.6">
+      <animate attributeName="r" values="2;20;2" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1820" cy="200" r="2" fill="url(#primaryGradient)" opacity="0.6">
+      <animate attributeName="r" values="2;30;2" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="960" cy="540" r="2" fill="url(#primaryGradient)" opacity="0.6">
+      <animate attributeName="r" values="2;40;2" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="300" cy="800" r="2" fill="url(#primaryGradient)" opacity="0.6">
+      <animate attributeName="r" values="2;25;2" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1600" cy="900" r="2" fill="url(#primaryGradient)" opacity="0.6">
+      <animate attributeName="r" values="2;35;2" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Points lumineux mobiles -->
+  <g class="moving-lights">
+    <circle r="5" fill="url(#glowGradient)" filter="url(#glow)">
+      <animateMotion dur="20s" repeatCount="indefinite">
+        <mpath href="#motionPath1"/>
+      </animateMotion>
+    </circle>
+    
+    <circle r="5" fill="url(#glowGradient)" filter="url(#glow)">
+      <animateMotion dur="15s" repeatCount="indefinite">
+        <mpath href="#motionPath2"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Chemins de mouvement -->
+  <path id="motionPath1" d="M 100 100 Q 960 540 1820 980" fill="none"/>
+  <path id="motionPath2" d="M 1820 100 Q 960 540 100 980" fill="none"/>
+
+  <!-- Groupe pour les éléments dynamiques -->
+  <g id="dynamic-elements"></g>
+</svg>

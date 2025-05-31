@@ -1,0 +1,44 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1066.6666 574.0777"
+  width="100%"
+  height="100%"
+  preserveAspectRatio="xMidYMid slice"
+>
+  <style>
+    .circuit-dot {
+      fill: white;
+      fill-opacity: 0.2;
+    }
+    .circuit-line {
+      fill: white;
+      fill-opacity: 0.2;
+    }
+  </style>
+
+  <!-- Exemple de circuits épurés avec une nomenclature claire -->
+  <g id="circuit-network" transform="rotate(90) translate(0, -1066.6666)">
+    <g transform="matrix(1.3333,0,0,-1.3333,-544.83585,1066.6666)">
+      <g id="circuits">
+        <!-- Points lumineux (dots) -->
+        <g class="circuit-dot" id="dot-A" transform="translate(678.345,135.0544)">
+          <circle cx="-4.301" cy="0" r="4.304" />
+        </g>
+        <g class="circuit-dot" id="dot-B" transform="translate(647.8694,135.0544)">
+          <circle cx="-4.301" cy="0" r="4.304" />
+        </g>
+        <g class="circuit-dot" id="dot-C" transform="translate(604.5617,91.7704)">
+          <circle cx="-4.301" cy="0" r="4.304" />
+        </g>
+
+        <!-- Connexions (lines) -->
+        <g class="circuit-line" id="line-A-B" transform="translate(647.8694,135.0544)">
+          <path d="M 0,0 L 30.475,0" />
+        </g>
+        <g class="circuit-line" id="line-B-C" transform="translate(604.5617,91.7704)">
+          <path d="M 0,0 L 43.308,43.284" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,1 +1,224 @@
-// app global css in Sass form
+// --- Fonts
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;600;700;800&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap')
+
+// Reset global
+*
+  box-sizing: border-box
+
+html, body
+  font-family: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size: 14px
+  line-height: 1.6
+  scroll-behavior: smooth
+
+body
+  min-height: 100vh
+  overflow-x: hidden
+
+// ---- MODE DARK
+body.body--dark
+  background: linear-gradient(135deg, $dark 0%, #1a1a2e 50%, #16213e 100%)
+  color: rgba(255, 255, 255, 0.9)
+
+  .q-card
+    background: rgba(10, 10, 15, 0.86) !important
+    color: rgba(255, 255, 255, 0.95) !important
+
+// ---- MODE LIGHT
+body.body--light
+  background: linear-gradient(135deg, #fffbe7 0%, #fff 100%)
+  color: #222
+
+  .q-card
+    background: rgba(255,255,255, 0.96) !important
+    color: #222 !important
+
+// Layout
+.q-layout
+  background: transparent
+
+// === INPUT GLOBAL THEME (inputs + selects) ===
+.q-input, .q-select
+  .q-field__control
+    border-radius: 16px !important
+    border: 1.5px solid transparent
+    background: rgba(255,255,255,0.13)
+    color: #fff
+    font-weight: 500
+    transition: border-color 0.3s, background 0.3s
+
+    &:hover
+      border-color: $primary
+
+  .q-field__control--focused
+    border-color: $accent
+    background: rgba(255,255,255,0.22)
+    box-shadow: 0 2px 12px rgba($primary,0.07)
+
+  .q-field__native, .q-field__label
+    color: #fff !important
+    font-weight: 500
+
+// Mode clair pour les inputs (optionnel, laisse sinon le dark glass)
+body.body--light
+  .q-input, .q-select
+    .q-field__control
+      background: rgba(0,0,0,0.05)
+      color: #1a1a2e
+    .q-field__native, .q-field__label
+      color: #222 !important
+
+// === Animations
+@keyframes float
+  0%, 100%
+    transform: translateY(0px)
+  50%
+    transform: translateY(-10px)
+
+@keyframes pulse
+  0%, 100%
+    transform: scale(1)
+    opacity: 1
+  50%
+    transform: scale(1.05)
+    opacity: 0.9
+
+@keyframes glow
+  0%, 100%
+    box-shadow: 0 0 5px rgba($primary, 0.5)
+  50%
+    box-shadow: 0 0 20px rgba($primary, 0.8)
+
+@keyframes fadeIn
+  from
+    opacity: 0
+    transform: translateY(20px)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+// === Styles Quasar personnalisés
+.q-header
+  background: rgba(10, 10, 15, 0.9) !important
+  backdrop-filter: blur(20px)
+  border-bottom: 1px solid rgba($primary, 0.2)
+
+.q-btn
+  border-radius: 16px !important
+  font-weight: 500 !important
+  text-transform: none !important
+  transition: all 0.3s ease
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2)
+
+.q-card
+  border-radius: 20px !important
+  transition: all 0.3s ease
+
+  &:hover
+    transform: translateY(-4px)
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2)
+
+.q-item
+  border-radius: 12px !important
+  margin: 4px 8px !important
+  transition: all 0.3s ease
+
+  &:hover
+    background: rgba($primary, 0.10) !important
+    transform: translateX(4px)
+
+.q-item--active
+  background: rgba($primary, 0.16) !important
+  border-left: 4px solid $primary
+
+  .q-icon
+    color: $primary !important
+
+.q-dialog .q-card
+  border-radius: 24px !important
+
+.q-notification
+  border-radius: 16px !important
+  backdrop-filter: blur(20px)
+
+.q-tooltip
+  background: rgba($primary, 0.9) !important
+  color: white !important
+  border-radius: 12px !important
+  font-size: 0.8rem
+
+.q-badge
+  border-radius: 12px !important
+  font-weight: 600
+
+.q-linear-progress
+  background: rgba($primary, 0.2) !important
+
+.q-spinner
+  color: $primary !important
+
+// Scrollbar personnalisée
+::-webkit-scrollbar
+  width: 8px
+  height: 8px
+
+::-webkit-scrollbar-track
+  background: rgba(255, 255, 255, 0.1)
+  border-radius: 10px
+
+::-webkit-scrollbar-thumb
+  background: linear-gradient(45deg, $primary, $accent)
+  border-radius: 10px
+
+  &:hover
+    background: linear-gradient(45deg, #e55532, #e6932e)
+
+// Sélection de texte
+::selection
+  background: rgba($primary, 0.3)
+  color: white
+
+// Focus outline
+*:focus
+  outline: 2px solid rgba($primary, 0.5) !important
+  outline-offset: 2px !important
+
+// Responsive
+@media (max-width: 768px)
+  .q-btn
+    min-height: 44px !important
+
+@media (max-width: 480px)
+  .q-card
+    border-radius: 12px
+
+// Mode impression
+@media print
+  .q-card
+    background: white !important
+    box-shadow: none !important
+// ---- Autofill fix pour input/textarea en dark & light
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill
+  transition: background-color 9999s ease-in-out 0s
+  // Color text (ex: pour le dark mode)
+  -webkit-text-fill-color: rgba(255,255,255,0.95) !important
+  // Fix border radius si tu veux :
+  border-radius: 16px !important
+
+body.body--dark input:-webkit-autofill,
+body.body--dark textarea:-webkit-autofill,
+body.body--dark select:-webkit-autofill
+  -webkit-box-shadow: 0 0 0 1000px #222a32 inset !important
+  -webkit-text-fill-color: #fff !important
+
+body.body--light input:-webkit-autofill,
+body.body--light textarea:-webkit-autofill,
+body.body--light select:-webkit-autofill
+  -webkit-box-shadow: 0 0 0 1000px #f5f8ff inset !important
+  -webkit-text-fill-color: #222 !important
